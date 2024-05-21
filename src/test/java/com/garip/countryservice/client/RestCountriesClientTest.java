@@ -30,7 +30,7 @@ class RestCountriesClientTest {
     @InjectMocks
     private RestCountriesClient restCountriesClient;
 
-    private String restcountriesUrl = "restcountries.com";
+    private String restcountriesUrl = "http://restcountries.com";
 
     @BeforeEach
     void setUp() {
@@ -50,9 +50,7 @@ class RestCountriesClientTest {
         Optional<Map<String, List<String>>> queryParameters = Optional.empty();
         String[] fields = {"cca3", "name", "region", "population", "area"};
 
-        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host(restcountriesUrl)
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(restcountriesUrl)
                 .path(service + "/");
         UriComponents uri = uriComponentsBuilder.query("fields={keyword}")
                 .buildAndExpand(String.join(",", fields));

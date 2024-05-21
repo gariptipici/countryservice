@@ -23,10 +23,8 @@ public class RestCountriesClient {
     }
 
     public Country[] getCountries(String service, Optional<String> serviceParameter, Optional<Map<String, List<String>>> queryParameters, String... fields) {
-        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host(restcountriesUrl)
-                .path(service + "/");
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(restcountriesUrl)
+                .pathSegment(service + "/");
         serviceParameter.ifPresent(uriComponentsBuilder::path);
         queryParameters.ifPresent(qp -> qp.forEach(uriComponentsBuilder::queryParam));
         UriComponents uri = uriComponentsBuilder.query("fields={keyword}").buildAndExpand(String.join(",", fields));

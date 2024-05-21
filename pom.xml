@@ -15,6 +15,7 @@
     <description>country</description>
     <properties>
         <java.version>21</java.version>
+        <mockserver.version>5.15.0</mockserver.version>
     </properties>
     <dependencies>
         <dependency>
@@ -38,6 +39,19 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- mockserver -->
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>${mockserver.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-client-java</artifactId>
+            <version>${mockserver.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

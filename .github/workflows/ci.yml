@@ -50,16 +50,11 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/countryservice
 
-      - name: Push Docker image to Heroku Container Registry
-        run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/countryservice registry.heroku.com/countryservice/web
-          docker push registry.heroku.com/countryservice/web
-        env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-
-      - name: Release Docker image on Heroku
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
-          echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
-          docker push registry.heroku.com/countryservice/web
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+            heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+            heroku_app_name: "countryservice"
+            heroku_email: "gariptipici@gmail.com"
+            docker_image: ${{ secrets.DOCKER_USERNAME }}/countryservice
 

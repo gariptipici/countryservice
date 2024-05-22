@@ -74,4 +74,23 @@ If you prefer running the application in a Docker container, follow these additi
     curl --location 'http://localhost:8080/all/countries/byPopulationDensity'
     ```
 
+## Running with Docker Compose (Optional)
+
+If you prefer running the application in a Docker container, follow these additional steps:
+
+1. Run the Docker container:
+
+    ```bash
+    docker-compose up
+    ```
+
+2. The application will be accessible at `http://localhost:8080`.
+
+    ```bash
+    curl --location 'http://localhost:8080/region/asia/countries/mostBorderingCountryOfADifferentRegion'
+    ```
+    ```bash
+    curl --location 'http://localhost:8080/all/countries/byPopulationDensity'
+    ```
+
 

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
-import org.mockserver.matchers.Times;
 import org.mockserver.model.HttpRequest;
 import org.mockserver.model.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,7 @@ public class CountryControllerTestIT {
     }
 
     @Test
-    public void testGetCountriesByPopulationDensity() throws Exception {
+    void testGetCountriesByPopulationDensity() throws Exception {
         String responseBody = "[{\"cca3\":\"USA\",\"name\":{\"common\":\"United States\"},\"region\":\"Americas\",\"borders\":[],\"population\":331002651,\"area\":9833520}," +
                 "{\"cca3\":\"CAN\",\"name\":{\"common\":\"Canada\"},\"region\":\"Americas\",\"borders\":[],\"population\":37742154,\"area\":9984670}]";
         Map<String, List<String>> queryParams  = new HashMap<>() {{
@@ -63,7 +62,7 @@ public class CountryControllerTestIT {
     }
 
     @Test
-    public void testGetMostBorderingCountryOfADifferentRegion() throws Exception {
+    void testGetMostBorderingCountryOfADifferentRegion() throws Exception {
         String countriesResponse = "[{\"cca3\":\"DEU\",\"name\":{\"common\":\"Germany\"},\"region\":\"Europe\",\"borders\":[\"CHE\",\"FRA\"]}," +
                 "{\"cca3\":\"CHE\",\"name\":{\"common\":\"Switzerland\"},\"region\":\"Europe\",\"borders\":[\"DEU\",\"FRA\"]}," +
                 "{\"cca3\":\"FRA\",\"name\":{\"common\":\"France\"},\"region\":\"Europe\",\"borders\":[\"DEU\",\"CHE\"]}]";

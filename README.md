@@ -1,5 +1,3 @@
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gariptipici_countryservice)](https://sonarcloud.io/summary/new_code?id=gariptipici_countryservice)
-
 # Country Service
 
 This repository contains a Country Service application.
@@ -76,6 +74,9 @@ If you prefer running the application in a Docker container, follow these additi
 
 ## Running with Docker Compose (Optional)
 
+
+> Every push to this repository will automatically trigger a build and push of the Docker image to Docker Hub. This ensures that docker-compose up will provide the latest version of the application.
+
 If you prefer running the application in a Docker container, follow these additional steps:
 
 1. Run the Docker container:
@@ -93,4 +94,5 @@ If you prefer running the application in a Docker container, follow these additi
     curl --location 'http://localhost:8080/all/countries/byPopulationDensity'
     ```
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gariptipici_countryservice)](https://sonarcloud.io/summary/new_code?id=gariptipici_countryservice)
 

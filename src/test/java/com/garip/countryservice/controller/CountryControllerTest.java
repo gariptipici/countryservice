@@ -40,9 +40,9 @@ class CountryControllerTest {
 
     @Test
     void testGetCountriesByPopulationDensity() throws Exception {
-        CountryDTO country1 = CountryDTO.builder().name("United States").area(9833517).population(331000000).build();
-        CountryDTO country2 = CountryDTO.builder().name("China").area(9596961).population(1439323776).build();
-        CountryDTO country3 = CountryDTO.builder().name("Russia").area(17098242).population(145912025).build();
+        CountryDTO country1 = CountryDTO.builder().name("United States").area(100).population(10000000).build();//100000
+        CountryDTO country2 = CountryDTO.builder().name("China").area(100).population(1000000000).build();//10000000
+        CountryDTO country3 = CountryDTO.builder().name("Russia").area(1000).population(10000000).build();//10000
 
         List<CountryDTO> countries = Arrays.asList(country2, country1, country3);
 
@@ -76,8 +76,8 @@ class CountryControllerTest {
 
     @Test
     void testGetMostBorderingCountryOfADifferentRegion() throws Exception {
-        CountryDTO borderingCountry = CountryDTO.builder().name("France").region("Europe").build();
-        CountryDTO country = CountryDTO.builder().name("Germany").region("Europe").borders(Collections.singletonList(borderingCountry)).build();
+        CountryDTO borderingCountry = CountryDTO.builder().name("Turkey").region("Asia").build();
+        CountryDTO country = CountryDTO.builder().name("Greece").region("Europe").borders(Collections.singletonList(borderingCountry)).build();
 
         when(countryService.getMostBorderingCountryOfADifferentRegion(any(ServiceType.class), any()))
                 .thenReturn(country);
@@ -85,9 +85,9 @@ class CountryControllerTest {
         mockMvc.perform(get("/ALL/countries/mostBorderingCountryOfADifferentRegion")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Germany"))
+                .andExpect(jsonPath("$.name").value("Greece"))
                 .andExpect(jsonPath("$.region").value("Europe"))
                 .andExpect(jsonPath("$.borders.size()").value(1))
-                .andExpect(jsonPath("$.borders[0].name").value("France"));
+                .andExpect(jsonPath("$.borders[0].name").value("Turkey"));
     }
 }

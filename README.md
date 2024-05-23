@@ -40,9 +40,11 @@ Follow these steps to run the application on your local machine:
 
 5. Once the application has started, you can access it at `http://localhost:8080`.
 
+   `Sample request`: Sorted list of countries by population density in descending order.
     ```bash
     curl --location 'http://localhost:8080/region/asia/countries/mostBorderingCountryOfADifferentRegion'
     ```
+   `Sample request`: Country in Asia containing the most bordering countries of a different region.
     ```bash
     curl --location 'http://localhost:8080/all/countries/byPopulationDensity'
     ```
